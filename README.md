@@ -5,6 +5,7 @@ Selection of tools
 # DotnetLambdaSolution1
 ~~~
 dotnet new --install Amazon.Lambda.Templates
+dotnet tool install -g Amazon.Lambda.Tools
 dotnet new lambda.image.EmptyFunction --name MyFunction1 --region eu-west-1
 cd MyFunction1/src/MyFunction1/
 dotnet tool install -g Amazon.Lambda.Tools

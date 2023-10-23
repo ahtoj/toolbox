@@ -7,16 +7,27 @@ namespace MyFunction1;
 
 public class Function
 {
-    
-    /// <summary>
-    /// A simple function that takes a string and returns both the upper and lower case version of the string.
-    /// </summary>
-    /// <param name="input"></param>
-    /// <param name="context"></param>
-    /// <returns></returns>
-    public Casing FunctionHandler(string input, ILambdaContext context)
+    private readonly IExampleService exampleService;
+
+    // Default ctor
+    public Function()
+        : this(ExampleServiceBootstrapper.CreateInstance()) { }
+
+    // Injection ctor
+    public Function(IExampleService exampleService)
     {
-        return new Casing(input.ToLower(), input.ToUpper());
+        this.exampleService = exampleService;
+    }
+
+    [LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
+    public async Task<ExampleResult> FunctionHandler(ExampleEvent lambdaEvent)
+    {
+        var message = await this.exampleService.GetMessageToReturn();
+
+        return new ExampleResult
+        {
+            Message = message
+        };
     }
 }
 

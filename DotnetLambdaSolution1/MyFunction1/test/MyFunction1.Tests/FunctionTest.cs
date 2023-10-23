@@ -18,4 +18,25 @@ public class FunctionTest
         Assert.Equal("hello world", casing.Lower);
         Assert.Equal("HELLO WORLD", casing.Upper);
     }
+
+    [Fact]
+    public async Task Handler_Returns_Message_From_Example_Service()
+    {
+        var testMessage = "Hello, world!  Testing...";
+
+        var exampleServiceMock = new Mock();
+
+        exampleServiceMock
+            .Setup(m => m.GetMessageToReturn())
+            .Returns(Task.FromResult(testMessage));
+
+        // here we use the overloaded ctor to inject mocks
+        var function = new Function(exampleServiceMock.Object);
+
+        var result = await function.Handler(new ExampleEvent());
+
+        // assert that the message we told the service mock to return is equal to the one
+        // the function returns in the result.
+        Assert.Equal(testMessage, result.Message);
+    }
 }
