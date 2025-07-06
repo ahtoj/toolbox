@@ -1,0 +1,77 @@
+New-VMSwitch -SwitchName "NATSwitch" -SwitchType Internal
+New-NetIPAddress -IPAddress 192.168.111.1 -PrefixLength 24 -InterfaceAlias "vEthernet (NATSwitch)"
+New-NetNat -Name "NATNetwork" -InternalIPInterfaceAddressPrefix 192.168.111.0/24
+
+#
+
+Add-NetNatStaticMapping -NatName "NATNetwork" `
+    -Protocol TCP `
+    -ExternalIPAddress "0.0.0.0" `
+    -ExternalPort 222 `
+    -InternalIPAddress "192.168.111.2" `
+    -InternalPort 22
+
+### Add-NetNatStaticMapping -NatName "NATNetwork" -Protocol TCP -ExternalIPAddress "0.0.0.0" -ExternalPort 9092 -InternalIPAddress "192.168.111.3" -InternalPort 80
+### New-NetFirewallRule -DisplayName "Port 22 to VM" -Direction Inbound -LocalPort 22 -Protocol TCP -Action Allow
+
+#
+
+sudo apt install netplan.io
+sudo apt install systemd-resolved
+sudo apt install openvswitch-switch-dpdk
+
+sudo systemctl unmask systemd-networkd.service
+sudo systemctl unmask systemd-resolved.service
+sudo systemctl enable systemd-networkd.service
+sudo systemctl mask networking
+
+sudo systemctl enable systemd-resolved.service
+
+sudo ENABLE_TEST_COMMANDS=1 netplan migrate && sudo netplan try
+sudo chmod 600 /etc/netplan/*
+sudo apt purge ifupdown resolvconf -y && sudo rm -rf /etc/network
+sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
+# shutdown, update network, start
+
+# 
+
+sudo nano /etc/default/keyboard
+XKBLAYOUT="ee"
+sudo dpkg-reconfigure keyboard-configuratio
+sudo reboot
+
+#
+
+sudo netplan set ethernets.eth0.nameservers.addresses='["10.0.0.1"]'
+sudo netplan set ethernets.eth0.nameservers.addresses.search='[domain]'
+sudo netplan set ethernets.eth0.addresses='["10.0.0.126/24"]'
+sudo netplan set ethernets.eth0.routes='[{"to": "default", "via": "10.0.0.1"}]'
+sudo netplan set ethernets.eth0.dhcp4=false
+sudo netplan set ethernets.eth0.dhcp6=false
+sudo netplan apply
+
+sudo nano /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
+
+#
+
+sudo fdisk -l
+sudo lsblk
+sudo pvs
+sudo pvcreate /dev/sdb
+sudo pvs
+sudo vgs
+sudo vgextend ubuntu-vg /dev/sdb
+sudo vgs
+sudo lvs
+sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+sudo lvs
+sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
+
+
+
+
+
+
+
+
