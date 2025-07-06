@@ -1,0 +1,17 @@
+network:
+  version: 2
+  ethernets:
+    ens192:
+      match:
+        macaddress: "00:10:21:32:43:54"
+      addresses:
+      - "10.0.0.126/24"
+      nameservers:
+        addresses:
+        - 10.0.0.1
+      dhcp4: false
+      dhcp6: false
+      set-name: "ens192"
+      routes:
+      - to: "default"
+        via: "10.0.0.1"
