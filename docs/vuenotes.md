@@ -1,0 +1,16 @@
+npm create vue@latest
+◇  Project name (target directory):
+│  project
+│
+◇  Select features to include in your project: (↑/↓ to navigate, space to select, a to toggle all, enter to confirm)
+│  Router (SPA development), Pinia (state management), ESLint (error prevention)
+│
+◇  Select experimental features to include in your project: (↑/↓ to navigate, space to select, a to toggle all, enter to confirm)
+│  none
+cd project/
+npm install axios quagga --save
+npm run dev
+git init && git add -A && git commit -m "initial commit"
+
+
+
