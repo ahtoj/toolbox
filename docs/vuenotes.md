@@ -1,3 +1,4 @@
+~~~
 npm create vue@latest
 ◇  Project name (target directory):
 │  project
@@ -14,3 +15,4 @@ git init && git add -A && git commit -m "initial commit"
 
 
 
+~~~
