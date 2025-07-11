@@ -12,7 +12,9 @@ cd project/
 npm install axios quagga --save
 npm run dev
 git init && git add -A && git commit -m "initial commit"
-
+git branch -M master
+git remote add origin https://github.com/user/project.git
+git push -u origin master
 
 
 ~~~
