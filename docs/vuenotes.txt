@@ -8,7 +8,7 @@ npm create vue@latest
 ◇  Select experimental features to include in your project: (↑/↓ to navigate, space to select, a to toggle all, enter to confirm)
 │  none
 cd project/
-npm install axios quagga --save
+npm install axios vue-qrcode-reader --save
 npm run dev
 git init && git add -A && git commit -m "initial commit"
 git branch -M master
