@@ -1,0 +1,25 @@
+TeamViewer Setup Guide (Customer & IT Support)
+
+For the Customer (Easy Instructions):
+1. Go to: https://www.teamviewer.com
+2. Click the "Download for Free" button on the homepage.
+3. Once the file is downloaded, double-click on "TeamViewer_Setup.exe" (Windows) or "TeamViewer.dmg" (Mac).
+4. On Windows, choose "Default Installation" and click "Accept - next".
+5. Wait for the installation to finish. TeamViewer will open automatically.
+6. If it doesn't open, double-click the TeamViewer icon on your desktop.
+7. You will see YOUR ID and PASSWORD on the screen.
+
+Share YOUR ID and PASSWORD with the IT support person (phone, message, or email).
+
+
+For the IT Support Person:
+1. Install TeamViewer from https://www.teamviewer.com if not already installed.
+2. Open TeamViewer on your computer.
+3. In "Control Remote Computer", enter the customer's ID and click "Connect".
+4. Enter the password the customer provides.
+5. You will now be connected and can take control of the customer's computer.
+
+Tips
+- Works between Windows and Mac.
+- For frequent support, consider TeamViewer Host on the customer side.
+- All connections are secure and encrypted
