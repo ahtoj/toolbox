@@ -66,7 +66,9 @@ sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
 sudo lvs
 sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
 
-
+#
+# connect local 8443 to destination 10.2.3.2 8443 through 10.1.2.1
+plink.exe -ssh -L 8443:10.2.3.2:8443 -N -T user@10.1.2.1
 
 
 
