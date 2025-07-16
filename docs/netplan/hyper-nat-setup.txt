@@ -67,8 +67,13 @@ sudo lvs
 sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
 
 #
+
 # connect local 8443 to destination 10.2.3.2 8443 through 10.1.2.1
 plink.exe -ssh -L 8443:10.2.3.2:8443 -N -T user@10.1.2.1
+
+# connect local 3000 to destination 10.2.3.2 3000 through 10.1.2.1 when 10.1.2.1 cannot access 10.2.3.2 3000 directly
+plink.exe -ssh -L 8022:10.2.3.2:22 -N -T user@10.1.2.1
+plink.exe -ssh -L 3000:localhost:3000 -N -T -P 8022 user@localhost
 
 
 
