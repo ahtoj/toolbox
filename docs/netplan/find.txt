@@ -1,0 +1,4 @@
+# tail
+find /var/log/nginx /var/log/apache2 -type f -name '*error_log' -exec tail -f {} +
+
+#
