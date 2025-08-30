@@ -1,0 +1,25 @@
+Test tool: https://mxtoolbox.com/
+
+
+DomainKeys Identified Mail (DKIM)
+
+CNAME
+selector1._domainkey
+selector1-asd-eu._domainkey.asdeu.y-v1.dkim.mail.microsoft
+1 Hour
+
+CNAME
+selector2._domainkey
+selector2-asd-eu._domainkey.asdeu.y-v1.dkim.mail.microsoft
+1 Hour
+
+
+TXT
+_dmarc.asd.eu.
+v=DMARC1; p=quarantine; rua=mailto:aytezqhv@ag.eu.dmarcian.com; ruf=mailto:aytezqhv@fr.eu.dmarcian.com; fo=1;
+
+
+TXT
+asd.eu
+v=spf1 include:spf.protection.outlook.com include:amazonses.com -all
+
