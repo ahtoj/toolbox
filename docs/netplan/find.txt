@@ -2,3 +2,7 @@
 find /var/log/nginx /var/log/apache2 -type f -name '*error_log' -exec tail -f {} +
 
 #
+find /var/log/ -type f -mmin +10080 -execdir rm -f -- '{}' ';'
+
+#
+grep -Rnw '/path/to/somewhere/' -e 'pattern'
