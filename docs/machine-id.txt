@@ -1,0 +1,9 @@
+# 1. Remove the existing machine-id files
+sudo rm -f /etc/machine-id /var/lib/dbus/machine-id
+
+# 2. Regenerate the /etc/machine-id
+sudo systemd-machine-id-setup
+
+# 3. Create a new UUID for the D-Bus system
+sudo dbus-uuidgen --ensure=/etc/machine-id
+sudo dbus-uuidgen --ensure
