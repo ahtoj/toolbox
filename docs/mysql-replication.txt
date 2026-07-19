@@ -38,3 +38,10 @@ SHOW SLAVE STATUS\G
 
 
 https://hostperl.com/kb/tutorials/configure-mariadb-master-slave-replication-ubuntu-vps
+
+
+
+Skip 1 error:
+STOP SLAVE;SET GLOBAL sql_slave_skip_counter = 1;START SLAVE;
+SHOW SLAVE STATUS\G
+
